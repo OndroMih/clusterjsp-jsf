@@ -43,33 +43,6 @@
             </plugin>
         </plugins>
     </build>
-    
-    
-    <!--profiles>
-        <profile>
-            <id>copy-to-downloads</id>
-            <build>
-                <plugins>                    
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.7</version>
-                        <executions>
-                            <execution>
-                                <phase>verify</phase>
-                                <configuration>
-                                    <target>
-                                        <copy file="${project.build.directory}/${project.build.finalName}.war" todir="${user.home}/Downloads"/>
-                                    </target>
-                                </configuration>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles-->
+
 
 </project>
