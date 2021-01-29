@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cluster - Ha JSF Sample</title>
+    </h:head>
+    <f:event listener="#{model.invalidateSessionIfRequested()}" type="preRenderView" />
+    <h:body>
+        <BR/><BR/><BR/>
+        Served From Server: <b>#{request.serverName}</b>
+        <BR/><BR/>
+        <B>Instruction</B>
+        <UL>
+            <LI>Click on START NEW SESSION to start a new session</LI>
+        </UL>
+        <BR/>
+        <A HREF="HaJsf.xhtml" NAME="Link3">START NEW SESSION</A>
+    </h:body>
+</html>
+

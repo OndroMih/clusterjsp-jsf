@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.apache</groupId>
-    <artifactId>clusterjsp</artifactId>
+    <artifactId>clusterjsp-jsf</artifactId>
     <version>1.2.0-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>clusterjsp</name>
+    <name>clusterjsp-jsf</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

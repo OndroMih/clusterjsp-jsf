@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="en"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{model.instanceName} - Ha JSF Sample </title>
+    </h:head>
+    <f:event listener="#{model.setJSessionIdInstanceCookie()}" type="preRenderView" />
+    <f:event listener="#{model.addDataFromRequestToSession()}" type="preRenderView" />
+    <h:body>
+        <h1>Cluster - HA JSF Sample </h1>
+        <TABLE>
+            <TR>
+                <TD>
+                    <FORM ACTION="HaJsf.xhtml" method="POST" name="Form3" >
+                        <INPUT TYPE="submit" NAME="action" VALUE="RELOAD PAGE (POST)"/>
+                    </FORM>
+                </TD>
+                <TD>
+                    <FORM ACTION="HaJsf.xhtml" method="GET" name="Form3" >
+                        <INPUT TYPE="submit" VALUE="RELOAD PAGE (GET)" />
+                    </FORM>
+                </TD>
+            </TR>
+        </TABLE>   
+
+
+        <br />
+        <B>HttpSession Information:</B>
+        <UL>
+            <LI>Context Path:   <b>#{ model.contextPath }</b></LI>    
+            <LI>Served From Server:   <b>#{ model.serverName }</b></LI>
+            <LI>Server Port Number:   <b>#{ model.serverPort }</b></LI>
+            <LI>Executed From Server: <b>#{ model.hostName }</b></LI>
+            <LI>Served From Server instance: <b>#{ model.instanceName }</b></LI>
+            <LI>Executed Server IP Address: <b>#{ model.hostAddress }</b></LI>
+            <LI>Session ID:    <b>#{ model.sessionId }</b></LI>
+            <LI>Session Created:  #{ model.sessionCreationTime}</LI>
+            <LI>Last Accessed:    #{ model.sessionLastAccessedTime}</LI>
+            <LI>Session will go inactive in  <b>#{ model.session.maxInactiveInterval } seconds</b></LI>
+        </UL>
+        <BR/>
+        <B> Enter session attribute data: </B><BR/>
+        <FORM ACTION="HaJsf.xhtml" METHOD="POST" NAME="Form1">
+            Name of Session Attribute: 
+            <INPUT TYPE="text" SIZE="20" NAME="dataName"/>
+            <BR/>
+            Value of Sesion Attribute: 
+            <INPUT TYPE="text" SIZE="20" NAME="dataValue"/>
+            <br/>
+            <INPUT TYPE="submit" NAME="action" VALUE="ADD SESSION DATA"/>
+        </FORM>
+
+
+        <HR/><BR/>
+        <B>Data retrieved from the HttpSession: </B>
+        <FORM ACTION="ClearSession.xhtml" method="POST" name="Form2" >
+            <INPUT TYPE="submit" NAME="action" VALUE="CLEAR SESSION"/>
+        </FORM>
+        <h:panelGroup rendered="#{model.sessionAttributes.size() > 0}">
+            <ul>
+                <ui:repeat var="attr" value="#{model.sessionAttributes}">
+                    <li>#{attr.key} = #{attr.value}</li>
+                </ui:repeat>
+            </ul>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{model.sessionAttributes.size() == 0}">
+            No parameter entered for this request
+        </h:panelGroup>
+        <BR/><BR/>
+        <HR/>
+        <B>INSTRUCTIONS</B>
+        <UL>
+            <LI>Add session data using the form. Upon pressing ADD SESSION DATA, the current session data will be listed.</LI>
+            <LI>Click on RELOAD PAGE to display the current session data without adding new data.</LI>
+            <LI>Click on CLEAR SESSION to invalidate the current session.</LI>
+        </UL>
+
+    </h:body>
+</html>
+
+
+
